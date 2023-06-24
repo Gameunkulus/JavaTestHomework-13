@@ -15,7 +15,7 @@ public class Todos {
         tasks = addToArray(tasks, task);
     }
 
-    public boolean matches(String query){
+    public boolean matches(String query) {
         return false;
     }
 

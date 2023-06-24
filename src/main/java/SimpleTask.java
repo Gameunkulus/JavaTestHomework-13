@@ -8,7 +8,7 @@ public class SimpleTask extends Task {
 
     @Override
     public boolean matches(String query) {
-        if (title.contains(query)) {
+        if (getTitle().contains(query)) {
             return true;
         }
         return false;
