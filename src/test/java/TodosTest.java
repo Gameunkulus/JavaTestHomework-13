@@ -56,7 +56,7 @@ public class TodosTest {
         Assertions.assertTrue(simpleTask.matches("Позвонить родителям"));
         Assertions.assertFalse(simpleTask.matches("Позвонить адвокату"));
         Assertions.assertFalse(todos.matches("Сходить в магазин"));
-        Assertions.assertFalse(todos..matches("Сходить в спортзал"));
+        Assertions.assertFalse(todos.matches("Сходить в спортзал"));
 
     }
 
