@@ -18,7 +18,7 @@ public class Meeting extends Task {
         if (project.contains(query)) {
             return true;
         }
-        return false;
+        return super.matches(query);
     }
 
     public String getTopic() {

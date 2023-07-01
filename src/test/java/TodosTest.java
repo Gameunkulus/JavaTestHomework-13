@@ -72,7 +72,7 @@ public class TodosTest {
     void getSimpleTaskTest() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
         String expectation = "Позвонить родителям";
-        Assertions.assertEquals(expectation,simpleTask.title);
+        Assertions.assertEquals(expectation, simpleTask.title);
     }
 
     @Test
@@ -88,8 +88,46 @@ public class TodosTest {
         String expectation1 = "Выкатка 3й версии приложения";
         String expectation2 = "Приложение НетоБанка";
         String expectation3 = "Во вторник после обеда";
-        Assertions.assertEquals(expectation1,meeting.getTopic());
-        Assertions.assertEquals(expectation2,meeting.getProject());
-        Assertions.assertEquals(expectation3,meeting.getStart());
+        Assertions.assertEquals(expectation1, meeting.getTopic());
+        Assertions.assertEquals(expectation2, meeting.getProject());
+        Assertions.assertEquals(expectation3, meeting.getStart());
+    }
+
+
+    @Test
+    void searchTest() {
+        SimpleTask simpleTask1 = new SimpleTask(5, "Позвонить родителям");
+        SimpleTask simpleTask2 = new SimpleTask(6, "Позвонить девушке");
+        SimpleTask simpleTask3 = new SimpleTask(7, "Позвонить другу");
+
+
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+        Epic epic = new Epic(55, subtasks);
+
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+
+        Todos todos = new Todos();
+
+        todos.add(simpleTask1);
+        todos.add(simpleTask2);
+        todos.add(simpleTask3);
+        todos.add(epic);
+        todos.add(meeting);
+
+        Task[] expectation1 = {
+                simpleTask1, simpleTask2, simpleTask3
+        };
+
+        Task expectation2[] = {meeting};
+
+        Task expectation3[] = new Task[0];
+        Assertions.assertArrayEquals(expectation1, todos.search("Позвонить"));
+        Assertions.assertArrayEquals(expectation2, todos.search("Приложение НетоБанка"));
+        Assertions.assertArrayEquals(expectation3, todos.search("Зубная паста"));
     }
 }

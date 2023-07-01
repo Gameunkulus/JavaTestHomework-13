@@ -11,7 +11,7 @@ public class SimpleTask extends Task {
         if (getTitle().contains(query)) {
             return true;
         }
-        return false;
+        return super.matches(query);
     }
 
     public String getTitle() {
